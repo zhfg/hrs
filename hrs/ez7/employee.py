@@ -29,6 +29,12 @@ class Employee(Base):
     id = PHumM001.c.PHumM0a01
     name = PHumM001.c.PHumM0a02
     card_id = PHumM001.c.PHumM0a39
-    jobState = PHumM001.c.PHumM0a17
+    job_state = PHumM001.c.PHumM0a17
 
+    def list(self, db):
+        r = db.query(Employee).all()
+        return r
 
+    def get(self, db, employee_id):
+        r = db.query(Employee).filter(Employee.id == employee_id).first()
+        return r

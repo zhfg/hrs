@@ -26,4 +26,10 @@ class Access(Base):
     def __repr__(self):
         return "<Access(acc_id=%s, acc_type=%s, acc_name=%s>" % (
                 self.accID, self.accType, self.accName.encode('utf-8'))
+    
+    def list(self, ez7):
+        return ez7.db_session.query(Access).all()
+
+    def get(self, ez7, access_id):
+        return ez7.db_session.query(Access).filter(Access.id = access_id).first()
 
